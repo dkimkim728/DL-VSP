@@ -1,0 +1,11 @@
+🔗 Download Pretrained MolFormer Checkpoint
+
+The original pretrained checkpoint `N-Step-Checkpoint_3_30000.ckpt` used in this pipeline
+exceeds GitHub’s upload limit.
+
+Please download it manually from the official IBM MolFormer release:
+
+📥 https://ibm.box.com/shared/static/t4l7vh3d5z7n84uqgwrz5gn7f41ptbb4.ckpt
+
+Place the file into this directory:
+2_model_training/finetuning/pretrained/

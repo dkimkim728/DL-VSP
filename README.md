@@ -16,10 +16,10 @@ This repository provides a comprehensive protocol for conducting **virtual drug 
 
 ## 🏗️ Pipeline Overview
 
-### 1. Pharmacotranscriptomic Screening
-- **Input**: Gene expression profiles (e.g., LINCS L1000)  
-- **Model**: Fine-tuned MolFormer  
-- **Output**: Transcriptomic suppression score (e.g., LFC)
+### 1. Data Processing
+- **Input**: LINCS L1000 pharmacotranscriptomic datasets  
+- **Task**: Curate compound + gene expression matrix; normalize and label with log fold-change (LFC) for target gene  
+- **Output**: Model-ready CSV with SMILES and labeled gene activity (e.g., LFC of PIN1)
 
 ### 2. Model Training
 - **Stages**: Full dataset → Biological subset → Target-specific subset  
@@ -31,7 +31,7 @@ This repository provides a comprehensive protocol for conducting **virtual drug 
 - **Tools**: RDKit, Open Babel  
 - **Output**: Validated, conformer-enriched ligand files
 
-### 4. Structure-Based Virtual Screening
+### 4. Protein-Ligand Docking
 - **Input**: Target protein (PDBQT) and ligand library (PDBQT)  
 - **Tool**: AutoDock Vina  
 - **Output**: Docking scores (binding affinity)
@@ -95,7 +95,7 @@ Protocol/
 │   ├── utils.py
 │   └── finetuning/
 │       ├── pretrained/
-│       │   └── N-Step-Checkpoint_3_30000.ckpt
+│       │   └── database_link.txt
 │       ├── rotate_attention/
 │       │   ├── attention_layer.py
 │       │   ├── rotary.py
@@ -112,7 +112,7 @@ Protocol/
 │   ├── predict.py
 │   └── screen_valid_smiles.py
 │
-├── 4_docking/
+├── 4_protein_ligand_docking/
 │   ├── run_docking_batch.py
 │   ├── input/sample/
 │   │   ├── conf.txt

@@ -67,8 +67,20 @@ This repository provides a comprehensive protocol for conducting **virtual drug 
 - [ADMET-AI](https://admet.ai.greenstonebio.com)  
 - PyMOL / ChimeraX (for structural visualization)
 
-> Create the environment using:  
-> `conda env create -f envs/env.yaml`
+> Create the environments for each module using:
+
+```bash
+# For Pharmacotranscriptomic Model Training & Prediction
+conda env create -f envs/MolFormer_env.yaml
+
+# For Protein-Ligand Docking (AutoDock Vina)
+conda env create -f envs/Vina_env.yaml
+
+# For Molecular Dynamics Simulation (AmberTools + OpenMM)
+conda env create -f envs/Ambertools_env.yaml
+
+# For ADMET Property Evaluation (ADMET-AI Scoring)
+conda env create -f envs/ADMETai_env.yaml
 
 ---
 

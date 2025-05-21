@@ -1,0 +1,27 @@
+# === Load force fields ===
+source leaprc.protein.ff14SB
+source leaprc.gaff
+source leaprc.water.tip3p
+
+# === Define base paths ===
+set base_in "/home/UWO/dkim728/GxVAEs-main/MD_analysis/input"
+set base_out "/home/UWO/dkim728/GxVAEs-main/MD_analysis/mutant/com53"
+
+# === Load ligand and protein ===
+loadamberparams "${base_in}/3_frcmod/com53.frcmod"
+LIG = loadmol2 "${base_in}/2_mol2/com53.mol2"
+PROT = loadpdb "${base_in}/protein/inactive.pdb"
+
+# === Combine and save complex ===
+complex = combine { PROT LIG }
+savepdb complex "${base_out}/ligand_vac.pdb"
+
+# === Add ions and solvate ===
+addions complex Cl- 1
+solvatebox complex TIP3PBOX 12.0
+
+# === Save final system ===
+savepdb complex "${base_out}/ligand_wat.pdb"
+saveamberparm complex "${base_out}/ligand_wat.prmtop" "${base_out}/ligand_wat.inpcrd"
+
+quit

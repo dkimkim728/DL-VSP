@@ -1,0 +1,2 @@
+smiles,ADMET_Score,AMES,Caco2_Wang,Carcinogens_Lagunin,CYP1A2_Veith,CYP2C19_Veith,CYP2C9_Veith,CYP2C9_Substrate_CarbonMangels,CYP2D6_Veith,CYP2D6_Substrate_CarbonMangels,CYP3A4_Veith,CYP3A4_Substrate_CarbonMangels,hERG,HIA_Hou,Pgp_Broccatelli
+O=C(NC(=O)C1CCCCC1)NC1CCC(O)CC1,0.7643531225326163,1,1,1,1,1,1,1,1,0,1,0,1,0,1

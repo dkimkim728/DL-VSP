@@ -1,0 +1,288 @@
+MODEL 1
+REMARK VINA RESULT:    -5.541      0.000      0.000
+REMARK INTER + INTRA:          -5.966
+REMARK INTER:                  -5.865
+REMARK INTRA:                  -0.100
+REMARK UNBOUND:                -0.100
+REMARK  Name = /home/UWO/dkim728/GxVAEs-main/blind_docking/input/conformer/com85/com85_variant0_conf0.pdb
+REMARK  2 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C_1  and  C_2
+REMARK    2  A    between atoms: C_2  and  C_3
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C   UNL     1      -1.110  27.583  25.189  0.00  0.00    +0.480 C 
+ATOM      2  O   UNL     1      -1.387  26.382  25.095  0.00  0.00    -0.533 OA
+ATOM      3  N   UNL     1      -1.405  28.460  24.146  0.00  0.00    -0.565 N 
+ATOM      4  C   UNL     1      -2.182  27.943  23.016  0.00  0.00    +0.274 C 
+ATOM      5  C   UNL     1      -1.757  28.591  21.706  0.00  0.00    +0.042 C 
+ATOM      6  C   UNL     1      -1.867  30.105  21.818  0.00  0.00    +0.212 C 
+ATOM      7  N   UNL     1      -1.291  30.595  23.054  0.00  0.00    -0.509 N 
+ATOM      8  C   UNL     1      -1.059  29.808  24.165  0.00  0.00    +0.572 A 
+ATOM      9  N   UNL     1      -0.485  30.522  25.105  0.00  0.00    -0.541 NA
+ATOM     10  C   UNL     1      -0.370  31.798  24.606  0.00  0.00    +0.187 A 
+ATOM     11  C   UNL     1       0.157  32.952  25.201  0.00  0.00    -0.016 A 
+ATOM     12  C   UNL     1       0.159  34.150  24.474  0.00  0.00    +0.022 A 
+ATOM     13  C   UNL     1      -0.355  34.196  23.176  0.00  0.00    +0.023 A 
+ATOM     14  C   UNL     1      -0.885  33.056  22.564  0.00  0.00    -0.035 A 
+ATOM     15  C   UNL     1      -0.876  31.873  23.312  0.00  0.00    +0.159 A 
+ENDROOT
+BRANCH   1  17
+ATOM     16  C   UNL     1      -1.428  28.160  27.643  0.00  0.00    +0.149 C 
+ATOM     17  C   UNL     1      -0.464  28.113  26.463  0.00  0.00    +0.079 C 
+ENDBRANCH   1  17
+TORSDOF 1
+ENDMDL
+MODEL 2
+REMARK VINA RESULT:    -5.479      2.850      5.421
+REMARK INTER + INTRA:          -5.899
+REMARK INTER:                  -5.824
+REMARK INTRA:                  -0.075
+REMARK UNBOUND:                -0.100
+REMARK  Name = /home/UWO/dkim728/GxVAEs-main/blind_docking/input/conformer/com85/com85_variant0_conf0.pdb
+REMARK  2 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C_1  and  C_2
+REMARK    2  A    between atoms: C_2  and  C_3
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C   UNL     1      -0.952  33.585  23.457  0.00  0.00    +0.480 C 
+ATOM      2  O   UNL     1      -1.266  34.714  23.062  0.00  0.00    -0.533 OA
+ATOM      3  N   UNL     1      -1.910  32.744  24.021  0.00  0.00    -0.565 N 
+ATOM      4  C   UNL     1      -3.309  33.180  23.990  0.00  0.00    +0.274 C 
+ATOM      5  C   UNL     1      -4.062  32.718  25.230  0.00  0.00    +0.042 C 
+ATOM      6  C   UNL     1      -3.947  31.208  25.374  0.00  0.00    +0.212 C 
+ATOM      7  N   UNL     1      -2.586  30.752  25.179  0.00  0.00    -0.509 N 
+ATOM      8  C   UNL     1      -1.607  31.489  24.542  0.00  0.00    +0.572 A 
+ATOM      9  N   UNL     1      -0.468  30.834  24.568  0.00  0.00    -0.541 NA
+ATOM     10  C   UNL     1      -0.722  29.643  25.204  0.00  0.00    +0.187 A 
+ATOM     11  C   UNL     1       0.139  28.573  25.486  0.00  0.00    -0.016 A 
+ATOM     12  C   UNL     1      -0.369  27.452  26.155  0.00  0.00    +0.022 A 
+ATOM     13  C   UNL     1      -1.711  27.398  26.539  0.00  0.00    +0.023 A 
+ATOM     14  C   UNL     1      -2.586  28.456  26.269  0.00  0.00    -0.035 A 
+ATOM     15  C   UNL     1      -2.054  29.563  25.599  0.00  0.00    +0.159 A 
+ENDROOT
+BRANCH   1  17
+ATOM     16  C   UNL     1       0.818  32.677  21.877  0.00  0.00    +0.149 C 
+ATOM     17  C   UNL     1       0.484  33.102  23.302  0.00  0.00    +0.079 C 
+ENDBRANCH   1  17
+TORSDOF 1
+ENDMDL
+MODEL 3
+REMARK VINA RESULT:    -5.310      1.893      2.594
+REMARK INTER + INTRA:          -5.721
+REMARK INTER:                  -5.649
+REMARK INTRA:                  -0.072
+REMARK UNBOUND:                -0.100
+REMARK  Name = /home/UWO/dkim728/GxVAEs-main/blind_docking/input/conformer/com85/com85_variant0_conf0.pdb
+REMARK  2 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C_1  and  C_2
+REMARK    2  A    between atoms: C_2  and  C_3
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C   UNL     1      -1.428  27.637  26.374  0.00  0.00    +0.480 C 
+ATOM      2  O   UNL     1      -2.016  26.816  27.086  0.00  0.00    -0.533 OA
+ATOM      3  N   UNL     1      -1.959  28.912  26.182  0.00  0.00    -0.565 N 
+ATOM      4  C   UNL     1      -3.139  29.288  26.965  0.00  0.00    +0.274 C 
+ATOM      5  C   UNL     1      -4.062  30.204  26.174  0.00  0.00    +0.042 C 
+ATOM      6  C   UNL     1      -3.293  31.427  25.695  0.00  0.00    +0.212 C 
+ATOM      7  N   UNL     1      -2.014  31.064  25.118  0.00  0.00    -0.509 N 
+ATOM      8  C   UNL     1      -1.379  29.858  25.341  0.00  0.00    +0.572 A 
+ATOM      9  N   UNL     1      -0.267  29.805  24.644  0.00  0.00    -0.541 NA
+ATOM     10  C   UNL     1      -0.167  31.006  23.983  0.00  0.00    +0.187 A 
+ATOM     11  C   UNL     1       0.831  31.476  23.118  0.00  0.00    -0.016 A 
+ATOM     12  C   UNL     1       0.702  32.757  22.565  0.00  0.00    +0.022 A 
+ATOM     13  C   UNL     1      -0.403  33.555  22.869  0.00  0.00    +0.023 A 
+ATOM     14  C   UNL     1      -1.410  33.105  23.729  0.00  0.00    -0.035 A 
+ATOM     15  C   UNL     1      -1.257  31.823  24.268  0.00  0.00    +0.159 A 
+ENDROOT
+BRANCH   1  17
+ATOM     16  C   UNL     1      -0.022  25.788  25.344  0.00  0.00    +0.149 C 
+ATOM     17  C   UNL     1      -0.103  27.263  25.722  0.00  0.00    +0.079 C 
+ENDBRANCH   1  17
+TORSDOF 1
+ENDMDL
+MODEL 4
+REMARK VINA RESULT:    -5.111      2.249      5.107
+REMARK INTER + INTRA:          -5.510
+REMARK INTER:                  -5.403
+REMARK INTRA:                  -0.107
+REMARK UNBOUND:                -0.100
+REMARK  Name = /home/UWO/dkim728/GxVAEs-main/blind_docking/input/conformer/com85/com85_variant0_conf0.pdb
+REMARK  2 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C_1  and  C_2
+REMARK    2  A    between atoms: C_2  and  C_3
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C   UNL     1      -0.068  32.223  24.164  0.00  0.00    +0.480 C 
+ATOM      2  O   UNL     1       0.343  32.481  25.302  0.00  0.00    -0.533 OA
+ATOM      3  N   UNL     1      -0.648  30.986  23.887  0.00  0.00    -0.565 N 
+ATOM      4  C   UNL     1      -0.889  30.075  25.009  0.00  0.00    +0.274 C 
+ATOM      5  C   UNL     1      -0.710  28.622  24.594  0.00  0.00    +0.042 C 
+ATOM      6  C   UNL     1      -1.614  28.307  23.410  0.00  0.00    +0.212 C 
+ATOM      7  N   UNL     1      -1.542  29.334  22.391  0.00  0.00    -0.509 N 
+ATOM      8  C   UNL     1      -1.070  30.613  22.614  0.00  0.00    +0.572 A 
+ATOM      9  N   UNL     1      -1.080  31.294  21.491  0.00  0.00    -0.541 NA
+ATOM     10  C   UNL     1      -1.594  30.452  20.533  0.00  0.00    +0.187 A 
+ATOM     11  C   UNL     1      -1.832  30.679  19.171  0.00  0.00    -0.016 A 
+ATOM     12  C   UNL     1      -2.371  29.645  18.394  0.00  0.00    +0.022 A 
+ATOM     13  C   UNL     1      -2.667  28.405  18.966  0.00  0.00    +0.023 A 
+ATOM     14  C   UNL     1      -2.435  28.158  20.323  0.00  0.00    -0.035 A 
+ATOM     15  C   UNL     1      -1.897  29.207  21.076  0.00  0.00    +0.159 A 
+ENDROOT
+BRANCH   1  17
+ATOM     16  C   UNL     1      -0.779  34.527  23.362  0.00  0.00    +0.149 C 
+ATOM     17  C   UNL     1       0.038  33.273  23.066  0.00  0.00    +0.079 C 
+ENDBRANCH   1  17
+TORSDOF 1
+ENDMDL
+MODEL 5
+REMARK VINA RESULT:    -5.059      2.248      4.960
+REMARK INTER + INTRA:          -5.455
+REMARK INTER:                  -5.395
+REMARK INTRA:                  -0.061
+REMARK UNBOUND:                -0.100
+REMARK  Name = /home/UWO/dkim728/GxVAEs-main/blind_docking/input/conformer/com85/com85_variant0_conf0.pdb
+REMARK  2 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C_1  and  C_2
+REMARK    2  A    between atoms: C_2  and  C_3
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C   UNL     1      -0.187  32.959  23.434  0.00  0.00    +0.480 C 
+ATOM      2  O   UNL     1      -0.052  33.935  22.686  0.00  0.00    -0.533 OA
+ATOM      3  N   UNL     1      -0.516  31.710  22.911  0.00  0.00    -0.565 N 
+ATOM      4  C   UNL     1      -0.546  31.563  21.453  0.00  0.00    +0.274 C 
+ATOM      5  C   UNL     1      -1.626  30.583  21.015  0.00  0.00    +0.042 C 
+ATOM      6  C   UNL     1      -1.423  29.245  21.711  0.00  0.00    +0.212 C 
+ATOM      7  N   UNL     1      -1.168  29.409  23.128  0.00  0.00    -0.509 N 
+ATOM      8  C   UNL     1      -0.745  30.590  23.706  0.00  0.00    +0.572 A 
+ATOM      9  N   UNL     1      -0.652  30.440  25.007  0.00  0.00    -0.541 NA
+ATOM     10  C   UNL     1      -0.991  29.135  25.272  0.00  0.00    +0.187 A 
+ATOM     11  C   UNL     1      -1.044  28.450  26.494  0.00  0.00    -0.016 A 
+ATOM     12  C   UNL     1      -1.425  27.101  26.499  0.00  0.00    +0.022 A 
+ATOM     13  C   UNL     1      -1.748  26.448  25.308  0.00  0.00    +0.023 A 
+ATOM     14  C   UNL     1      -1.703  27.114  24.079  0.00  0.00    -0.035 A 
+ATOM     15  C   UNL     1      -1.319  28.459  24.101  0.00  0.00    +0.159 A 
+ENDROOT
+BRANCH   1  17
+ATOM     16  C   UNL     1       0.785  34.397  25.290  0.00  0.00    +0.149 C 
+ATOM     17  C   UNL     1       0.034  33.119  24.932  0.00  0.00    +0.079 C 
+ENDBRANCH   1  17
+TORSDOF 1
+ENDMDL
+MODEL 6
+REMARK VINA RESULT:    -4.837      2.085      2.652
+REMARK INTER + INTRA:          -5.220
+REMARK INTER:                  -5.143
+REMARK INTRA:                  -0.077
+REMARK UNBOUND:                -0.100
+REMARK  Name = /home/UWO/dkim728/GxVAEs-main/blind_docking/input/conformer/com85/com85_variant0_conf0.pdb
+REMARK  2 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C_1  and  C_2
+REMARK    2  A    between atoms: C_2  and  C_3
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C   UNL     1      -1.644  28.246  26.774  0.00  0.00    +0.480 C 
+ATOM      2  O   UNL     1      -1.022  27.264  27.196  0.00  0.00    -0.533 OA
+ATOM      3  N   UNL     1      -1.124  29.019  25.738  0.00  0.00    -0.565 N 
+ATOM      4  C   UNL     1       0.094  28.546  25.075  0.00  0.00    +0.274 C 
+ATOM      5  C   UNL     1       0.978  29.707  24.640  0.00  0.00    +0.042 C 
+ATOM      6  C   UNL     1       0.186  30.655  23.751  0.00  0.00    +0.212 C 
+ATOM      7  N   UNL     1      -1.120  30.946  24.306  0.00  0.00    -0.509 N 
+ATOM      8  C   UNL     1      -1.744  30.172  25.264  0.00  0.00    +0.572 A 
+ATOM      9  N   UNL     1      -2.889  30.719  25.603  0.00  0.00    -0.541 NA
+ATOM     10  C   UNL     1      -3.022  31.848  24.830  0.00  0.00    +0.187 A 
+ATOM     11  C   UNL     1      -4.061  32.787  24.783  0.00  0.00    -0.016 A 
+ATOM     12  C   UNL     1      -3.959  33.867  23.896  0.00  0.00    +0.022 A 
+ATOM     13  C   UNL     1      -2.841  34.009  23.072  0.00  0.00    +0.023 A 
+ATOM     14  C   UNL     1      -1.792  33.084  23.105  0.00  0.00    -0.035 A 
+ATOM     15  C   UNL     1      -1.919  32.015  23.999  0.00  0.00    +0.159 A 
+ENDROOT
+BRANCH   1  17
+ATOM     16  C   UNL     1      -3.064  28.361  28.878  0.00  0.00    +0.149 C 
+ATOM     17  C   UNL     1      -3.000  28.596  27.373  0.00  0.00    +0.079 C 
+ENDBRANCH   1  17
+TORSDOF 1
+ENDMDL
+MODEL 7
+REMARK VINA RESULT:    -4.737      2.014      4.058
+REMARK INTER + INTRA:          -5.114
+REMARK INTER:                  -5.009
+REMARK INTRA:                  -0.105
+REMARK UNBOUND:                -0.100
+REMARK  Name = /home/UWO/dkim728/GxVAEs-main/blind_docking/input/conformer/com85/com85_variant0_conf0.pdb
+REMARK  2 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C_1  and  C_2
+REMARK    2  A    between atoms: C_2  and  C_3
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C   UNL     1      -2.739  29.218  20.332  0.00  0.00    +0.480 C 
+ATOM      2  O   UNL     1      -3.224  28.181  19.867  0.00  0.00    -0.533 OA
+ATOM      3  N   UNL     1      -2.123  29.210  21.583  0.00  0.00    -0.565 N 
+ATOM      4  C   UNL     1      -1.939  27.918  22.248  0.00  0.00    +0.274 C 
+ATOM      5  C   UNL     1      -2.069  28.047  23.759  0.00  0.00    +0.042 C 
+ATOM      6  C   UNL     1      -1.088  29.090  24.276  0.00  0.00    +0.212 C 
+ATOM      7  N   UNL     1      -1.112  30.294  23.472  0.00  0.00    -0.509 N 
+ATOM      8  C   UNL     1      -1.616  30.357  22.188  0.00  0.00    +0.572 A 
+ATOM      9  N   UNL     1      -1.546  31.591  21.742  0.00  0.00    -0.541 NA
+ATOM     10  C   UNL     1      -0.960  32.331  22.741  0.00  0.00    +0.187 A 
+ATOM     11  C   UNL     1      -0.640  33.695  22.780  0.00  0.00    -0.016 A 
+ATOM     12  C   UNL     1      -0.037  34.218  23.932  0.00  0.00    +0.022 A 
+ATOM     13  C   UNL     1       0.241  33.395  25.026  0.00  0.00    +0.023 A 
+ATOM     14  C   UNL     1      -0.072  32.032  25.007  0.00  0.00    -0.035 A 
+ATOM     15  C   UNL     1      -0.672  31.535  23.846  0.00  0.00    +0.159 A 
+ENDROOT
+BRANCH   1  17
+ATOM     16  C   UNL     1      -2.061  30.401  18.188  0.00  0.00    +0.149 C 
+ATOM     17  C   UNL     1      -2.791  30.507  19.522  0.00  0.00    +0.079 C 
+ENDBRANCH   1  17
+TORSDOF 1
+ENDMDL
+MODEL 8
+REMARK VINA RESULT:    -4.286      1.630      3.936
+REMARK INTER + INTRA:          -4.637
+REMARK INTER:                  -4.532
+REMARK INTRA:                  -0.105
+REMARK UNBOUND:                -0.100
+REMARK  Name = /home/UWO/dkim728/GxVAEs-main/blind_docking/input/conformer/com85/com85_variant0_conf0.pdb
+REMARK  2 active torsions:
+REMARK  status: ('A' for Active; 'I' for Inactive)
+REMARK    1  A    between atoms: C_1  and  C_2
+REMARK    2  A    between atoms: C_2  and  C_3
+REMARK                            x       y       z     vdW  Elec       q    Type
+REMARK                         _______ _______ _______ _____ _____    ______ ____
+ROOT
+ATOM      1  C   UNL     1      -0.486  28.056  25.658  0.00  0.00    +0.480 C 
+ATOM      2  O   UNL     1       0.044  28.068  26.775  0.00  0.00    -0.533 OA
+ATOM      3  N   UNL     1      -0.265  29.100  24.760  0.00  0.00    -0.565 N 
+ATOM      4  C   UNL     1       0.724  30.118  25.125  0.00  0.00    +0.274 C 
+ATOM      5  C   UNL     1       0.323  31.493  24.608  0.00  0.00    +0.042 C 
+ATOM      6  C   UNL     1       0.101  31.436  23.103  0.00  0.00    +0.212 C 
+ATOM      7  N   UNL     1      -0.698  30.290  22.721  0.00  0.00    -0.509 N 
+ATOM      8  C   UNL     1      -0.883  29.176  23.516  0.00  0.00    +0.572 A 
+ATOM      9  N   UNL     1      -1.696  28.333  22.920  0.00  0.00    -0.541 NA
+ATOM     10  C   UNL     1      -2.016  28.897  21.708  0.00  0.00    +0.187 A 
+ATOM     11  C   UNL     1      -2.836  28.412  20.680  0.00  0.00    -0.016 A 
+ATOM     12  C   UNL     1      -3.006  29.187  19.524  0.00  0.00    +0.022 A 
+ATOM     13  C   UNL     1      -2.370  30.424  19.397  0.00  0.00    +0.023 A 
+ATOM     14  C   UNL     1      -1.550  30.926  20.412  0.00  0.00    -0.035 A 
+ATOM     15  C   UNL     1      -1.397  30.133  21.554  0.00  0.00    +0.159 A 
+ENDROOT
+BRANCH   1  17
+ATOM     16  C   UNL     1      -0.622  25.550  25.258  0.00  0.00    +0.149 C 
+ATOM     17  C   UNL     1      -1.366  26.881  25.251  0.00  0.00    +0.079 C 
+ENDBRANCH   1  17
+TORSDOF 1
+ENDMDL

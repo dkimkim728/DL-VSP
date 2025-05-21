@@ -18,12 +18,11 @@ This repository provides a comprehensive protocol for conducting **virtual drug 
 
 ### 1. Pharmacotranscriptomic Screening
 - **Input**: Gene expression profiles (e.g., LINCS L1000)  
-- **Model**: Fine-tuned MolFormer  
-- **Output**: Transcriptomic suppression score (e.g., LFC)
+- **Output**: Filtered gene–compound tables for target protein expression
 
 ### 2. Model Training
 - **Stages**: Full dataset → Biological subset → Target-specific subset  
-- **Tool**: Hierarchically fine-tuned MolFormer  
+- **Model**: Hierarchically fine-tuned MolFormer  
 - **Output**: Model checkpoints and prediction script
 
 ### 3. Structure-Based Virtual Screening
@@ -38,6 +37,10 @@ This repository provides a comprehensive protocol for conducting **virtual drug 
 ### 5. ADMET Property Evaluation
 - **Tool**: ADMET-AI  
 - **Output**: Multi-property drug-likeness score
+
+### 6. Prioritized Compound Ranking
+- **Input**: Combined transcriptomic, docking, MD, and ADMET scores  
+- **Output**: Ranked list of candidate inhibitors
 
 ---
 
@@ -77,13 +80,32 @@ project_root/
 │   └── outputs/
 │
 ├── 2_model_training/
-│   ├── finetune.py
-│   ├── validate.py
-│   ├── predict.py
-│   ├── run_finetune_mu.sh
-│   ├── run_validate_mu.sh
-│   ├── run_predict_mu.sh
-│   └── outputs/
+│   └── finetuning/
+│       ├── finetune.py
+│       ├── validate.py
+│       ├── predict.py
+│       ├── args.py
+│       ├── utils.py
+│       ├── tokenizer.py
+│       ├── trainer.py
+│       ├── run_finetune.sh
+│       ├── run_validate_mu.sh
+│       ├── run_predict_mu.sh
+│       │
+│       ├── rotate_attention/
+│       │   ├── attention_layer.py
+│       │   ├── rotary.py
+│       │   ├── rotate_builder.py
+│       │
+│       ├── pretrained/
+│       │   └── N-Step-Checkpoint_3_30000.ckpt
+│       │
+│       ├── source/
+│           ├── sample_stage1.csv
+│           ├── sample_stage2.csv
+│           ├── sample_stage3.csv
+│           ├── sample_val.csv
+│           ├── sample_test.csv
 │
 ├── 3_smiles_preparation/
 │   ├── screen_valid_smiles.py
@@ -111,6 +133,4 @@ project_root/
 ├── envs/
 │   └── env.yaml
 ├── results/
-├── README.md
-├── LICENSE
 └── .gitignore

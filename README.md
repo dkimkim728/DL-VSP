@@ -18,29 +18,33 @@ This repository provides a comprehensive protocol for conducting **virtual drug 
 
 ### 1. Pharmacotranscriptomic Screening
 - **Input**: Gene expression profiles (e.g., LINCS L1000)  
-- **Output**: Filtered gene–compound tables for target protein expression
+- **Model**: Fine-tuned MolFormer  
+- **Output**: Transcriptomic suppression score (e.g., LFC)
 
 ### 2. Model Training
 - **Stages**: Full dataset → Biological subset → Target-specific subset  
-- **Model**: Hierarchically fine-tuned MolFormer  
+- **Tool**: Hierarchically fine-tuned MolFormer  
 - **Output**: Model checkpoints and prediction script
 
-### 3. Structure-Based Virtual Screening
-- **Input**: Target protein structure (PDB) and candidate ligand SMILES  
+### 3. Library Input
+- **Input**: Canonical SMILES for candidate ligands  
+- **Tools**: RDKit, Open Babel  
+- **Output**: Validated, conformer-enriched ligand files
+
+### 4. Structure-Based Virtual Screening
+- **Input**: Target protein (PDBQT) and ligand library (PDBQT)  
 - **Tool**: AutoDock Vina  
-- **Output**: Docking score (binding affinity)
+- **Output**: Docking scores (binding affinity)
 
-### 4. Molecular Dynamics Simulation
+### 5. Molecular Dynamics Simulation
+- **Input**: Docked complexes  
 - **Tool**: OpenMM  
-- **Output**: Structural stability (RMSD)
+- **Output**: Trajectory (DCD), minimized PDB, energy profiles
 
-### 5. ADMET Property Evaluation
+### 6. ADMET Property Evaluation
+- **Input**: Ligand library  
 - **Tool**: ADMET-AI  
-- **Output**: Multi-property drug-likeness score
-
-### 6. Prioritized Compound Ranking
-- **Input**: Combined transcriptomic, docking, MD, and ADMET scores  
-- **Output**: Ranked list of candidate inhibitors
+- **Output**: Drug-likeness score across 41 features
 
 ---
 
@@ -64,73 +68,96 @@ This repository provides a comprehensive protocol for conducting **virtual drug 
 - PyMOL / ChimeraX (for structural visualization)
 
 > Create the environment using:  
-> `conda env create -f env.yaml`
+> `conda env create -f envs/env.yaml`
 
 ---
 
 ## 📂 Directory Structure
 
 ```plaintext
-project_root/
+Protocol/
 │
 ├── 1_data_processing/
-│   ├── parse_gctx_to_csv.py
-│   ├── preprocess_expression_data.py
 │   ├── calculate_logfc.py
-│   └── outputs/
+│   ├── parse_gctx_to_csv.py
+│   └── preprocess_expression_data.py
 │
 ├── 2_model_training/
+│   ├── finetune.py
+│   ├── validate.py
+│   ├── predict.py
+│   ├── run_finetune.sh
+│   ├── run_validate.sh
+│   ├── run_predict.sh
+│   ├── args.py
+│   ├── tokenizer.py
+│   ├── trainer.py
+│   ├── utils.py
 │   └── finetuning/
-│       ├── finetune.py
-│       ├── validate.py
-│       ├── predict.py
-│       ├── args.py
-│       ├── utils.py
-│       ├── tokenizer.py
-│       ├── trainer.py
-│       ├── run_finetune.sh
-│       ├── run_validate_mu.sh
-│       ├── run_predict_mu.sh
-│       │
+│       ├── pretrained/
+│       │   └── N-Step-Checkpoint_3_30000.ckpt
 │       ├── rotate_attention/
 │       │   ├── attention_layer.py
 │       │   ├── rotary.py
-│       │   ├── rotate_builder.py
-│       │
-│       ├── pretrained/
-│       │   └── N-Step-Checkpoint_3_30000.ckpt
-│       │
-│       ├── source/
+│       │   └── rotate_builder.py
+│       └── source/
 │           ├── sample_stage1.csv
 │           ├── sample_stage2.csv
 │           ├── sample_stage3.csv
 │           ├── sample_val.csv
-│           ├── sample_test.csv
+│           └── sample_test.csv
 │
-├── 3_smiles_preparation/
-│   ├── screen_valid_smiles.py
+├── 3_library_input/
 │   ├── generate_multiconformers.py
-│   └── outputs/
+│   ├── predict.py
+│   └── screen_valid_smiles.py
 │
 ├── 4_docking/
 │   ├── run_docking_batch.py
-│   └── outputs/
+│   ├── input/sample/
+│   │   ├── conf.txt
+│   │   ├── sample_ligand.pdb
+│   │   └── sample_protein.pdb
+│   └── output/sample/
+│       ├── sample_variant0_conf0.pdbqt
+│       ├── sample_variant0_conf1.pdbqt
+│       ├── ...
+│       └── sample_variant0_conf9.pdbqt
 │
 ├── 5_md_simulation/
+│   ├── analyze_rmsd.py
 │   ├── convert_pdb_to_mol2.py
 │   ├── mol2_to_frcmod.py
-│   ├── assemble_complex_tleap.py
 │   ├── run_md_simulation.py
-│   ├── analyze_rmsd.py
 │   ├── tleap.in
-│   └── outputs/
+│   ├── input/sample/
+│   │   ├── frcmod/ligand.frcmod
+│   │   ├── gaff_mol2/ligand.mol2
+│   │   ├── ligand_complex/
+│   │   │   ├── ligand_vac.pdb
+│   │   │   ├── ligand_wat.inpcrd
+│   │   │   ├── ligand_wat.pdb
+│   │   │   └── ligand_wat.prmtop
+│   │   └── pdb/
+│   │       ├── sample_ligand.pdb
+│   │       └── sample_protein.pdb
+│   └── output/sample/
+│       ├── init.pdb
+│       ├── leap.log
+│       ├── RMSD_ligand.png
+│       └── scalars.csv
 │
 ├── 6_admet_scoring/
 │   ├── calculate_admet_score.py
-│   └── outputs/
+│   ├── input/sample/
+│   │   └── smiles.csv
+│   └── output/sample/
+│       ├── admet_score.csv
+│       └── result.csv
 │
 ├── data/
 ├── envs/
 │   └── env.yaml
 ├── results/
+├── LICENSE
 └── .gitignore

@@ -6,10 +6,10 @@ This repository provides a comprehensive protocol for conducting **virtual drug 
 
 ## 🧠 Key Features
 
-- End-to-end pipeline integrating transcriptomic, structural, and pharmacokinetic data
-- Fine-tuned **MolFormer** model for molecular property prediction
-- High-throughput screening of chemical libraries (e.g., ZINC20, PubChem)
-- Robust post-processing with **docking**, **MD simulations**, and **ADMET scoring**
+- End-to-end pipeline integrating transcriptomic, structural, and pharmacokinetic data  
+- Fine-tuned **MolFormer** model for molecular property prediction  
+- High-throughput screening of chemical libraries (e.g., ZINC20, PubChem)  
+- Robust post-processing with **docking**, **MD simulations**, and **ADMET scoring**  
 - Easily adaptable for different target proteins and disease contexts
 
 ---
@@ -17,29 +17,34 @@ This repository provides a comprehensive protocol for conducting **virtual drug 
 ## 🏗️ Pipeline Overview
 
 ### 1. Pharmacotranscriptomic Screening
-- **Input**: Gene expression profiles (e.g., LINCS L1000)
-- **Model**: Fine-tuned MolFormer
+- **Input**: Gene expression profiles (e.g., LINCS L1000)  
+- **Model**: Fine-tuned MolFormer  
 - **Output**: Transcriptomic suppression score (e.g., LFC)
 
-### 2. Structure-Based Virtual Screening
-- **Input**: Target protein structure (PDB) and candidate ligand SMILES
-- **Tool**: AutoDock Vina
+### 2. Model Training
+- **Stages**: Full dataset → Biological subset → Target-specific subset  
+- **Tool**: Hierarchically fine-tuned MolFormer  
+- **Output**: Model checkpoints and prediction script
+
+### 3. Structure-Based Virtual Screening
+- **Input**: Target protein structure (PDB) and candidate ligand SMILES  
+- **Tool**: AutoDock Vina  
 - **Output**: Docking score (binding affinity)
 
-### 3. Molecular Dynamics Simulation
-- **Tool**: OpenMM
+### 4. Molecular Dynamics Simulation
+- **Tool**: OpenMM  
 - **Output**: Structural stability (RMSD)
 
-### 4. ADMET Property Evaluation
-- **Tool**: ADMET-AI
+### 5. ADMET Property Evaluation
+- **Tool**: ADMET-AI  
 - **Output**: Multi-property drug-likeness score
 
 ---
 
 ## 🧬 Supported Data Sources
 
-- **Transcriptomics**: LINCS CLUE platform, GEO, or custom datasets
-- **Chemicals**: ZINC20, PubChem, or in-house compound libraries
+- **Transcriptomics**: LINCS CLUE platform, GEO, or custom datasets  
+- **Chemicals**: ZINC20, PubChem, or in-house compound libraries  
 - **Structures**: PDB (target protein), RDKit for ligand generation
 
 ---
@@ -65,10 +70,47 @@ This repository provides a comprehensive protocol for conducting **virtual drug 
 ```plaintext
 project_root/
 │
-├── data/                   # Preprocessed gene expression, SMILES, etc.
-├── model/                  # Fine-tuned MolFormer checkpoints
-├── docking/                # Ligand structures and docking configs
-├── md/                     # Molecular dynamics simulation inputs/outputs
-├── admet/                  # ADMET scoring results
-├── scripts/                # Pipeline automation and analysis scripts
-└── results/                # Final prioritized compounds
+├── 1_data_processing/
+│   ├── parse_gctx_to_csv.py
+│   ├── preprocess_expression_data.py
+│   ├── calculate_logfc.py
+│   └── outputs/
+│
+├── 2_model_training/
+│   ├── finetune.py
+│   ├── validate.py
+│   ├── predict.py
+│   ├── run_finetune_mu.sh
+│   ├── run_validate_mu.sh
+│   ├── run_predict_mu.sh
+│   └── outputs/
+│
+├── 3_smiles_preparation/
+│   ├── screen_valid_smiles.py
+│   ├── generate_multiconformers.py
+│   └── outputs/
+│
+├── 4_docking/
+│   ├── run_docking_batch.py
+│   └── outputs/
+│
+├── 5_md_simulation/
+│   ├── convert_pdb_to_mol2.py
+│   ├── mol2_to_frcmod.py
+│   ├── assemble_complex_tleap.py
+│   ├── run_md_simulation.py
+│   ├── analyze_rmsd.py
+│   ├── tleap.in
+│   └── outputs/
+│
+├── 6_admet_scoring/
+│   ├── calculate_admet_score.py
+│   └── outputs/
+│
+├── data/
+├── envs/
+│   └── env.yaml
+├── results/
+├── README.md
+├── LICENSE
+└── .gitignore

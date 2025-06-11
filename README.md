@@ -1,4 +1,4 @@
-# Multi-Omics-Guided Deep Learning Pipeline for Inhibitor Discovery
+# Deep Learning-Enabled Virtual Drug Screening Pipeline (Protein-targeted Therapeutics via Foundational Chemical Lang Model) 
 
 This repository provides a comprehensive protocol for conducting **virtual drug screening** using a **multi-omics-integrated AI pipeline**. The framework combines **pharmacotranscriptomic regression**, **structure-based docking**, **molecular dynamics (MD) simulations**, and **ADMET filtering** to prioritize novel small-molecule inhibitors for experimental validation.
 

@@ -1,6 +1,6 @@
 # Deep Learning-Enabled Virtual Drug Screening Pipeline (Protein-targeted Therapeutics via Foundational Chemical Lang Model) 
 
-This repository provides a comprehensive protocol for conducting **virtual drug screening** using a **multi-omics-integrated AI pipeline**. The framework combines **pharmacotranscriptomic regression**, **structure-based docking**, **molecular dynamics (MD) simulations**, and **ADMET filtering** to prioritize novel small-molecule inhibitors for experimental validation.
+This repository provides a comprehensive protocol for conducting **virtual drug screening** using a **deep learning–enabled pipeline for protein-targeted therapeutics**. The framework integrates **foundational chemical language models**, **structure-based docking**, **molecular dynamics (MD) simulations**, and **ADMET filtering** to prioritize novel small-molecule inhibitors for experimental validation. The pipeline is generalizable across targets and designed for scalable screening of ultra-large chemical libraries using pretrained transformer architectures fine-tuned for bioactivity prediction.
 
 ---
 

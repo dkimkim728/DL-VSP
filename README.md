@@ -1,175 +1,111 @@
-# Deep Learning-Enabled Virtual Drug Screening Pipeline (DL-VSP)
+# Deep Learning-Enabled Virtual Drug Screening Protocol (DL-VSP)
 
-This repository provides a comprehensive protocol for conducting **virtual drug screening** using a **deep learning–enabled pipeline for protein-targeted therapeutics**. The framework integrates **foundational chemical language models**, **structure-based docking**, **molecular dynamics (MD) simulations**, and **ADMET filtering** to prioritize novel small-molecule inhibitors for experimental validation. The pipeline is generalizable across targets and designed for scalable screening of ultra-large chemical libraries using pretrained transformer architectures fine-tuned for bioactivity prediction.
+This repository provides a reproducible framework for conducting **virtual drug screening** using a **deep learning–enabled pipeline for protein-targeted therapeutics**. The DL-VSP protocol integrates **chemical language modeling**, **structure-based docking**, **molecular dynamics (MD) simulations**, and **ADMET filtering** to prioritize candidate small-molecule inhibitors from ultra-large compound libraries.
+
+The pipeline is generalizable across disease areas and compatible with canonical SMILES-based input formats. A fine-tuned MolFormer model is used here as an example predictive engine for regression tasks such as transcriptomic modulation.
 
 ---
 
 ## 🧠 Key Features
 
-- End-to-end pipeline integrating transcriptomic, structural, and pharmacokinetic data  
-- Fine-tuned **MolFormer** model for molecular property prediction  
-- High-throughput screening of chemical libraries (e.g., ZINC20, PubChem)  
-- Robust post-processing with **docking**, **MD simulations**, and **ADMET scoring**  
-- Easily adaptable for different target proteins and disease contexts
+- End-to-end screening pipeline from chemical structure to candidate selection  
+- Integration of **MolFormer**, **AutoDock Vina**, **OpenMM**, and **ADMET-AI**  
+- Hierarchical model fine-tuning on multi-scale datasets (general to disease-specific)  
+- Compatible with ultra-large libraries such as ZINC20  
+- Modular design supporting diverse bioactivity prediction tasks
 
 ---
 
 ## 🏗️ Pipeline Overview
 
-### 1. Data Processing
-- **Input**: LINCS L1000 pharmacotranscriptomic datasets  
-- **Task**: Curate compound + gene expression matrix; normalize and label with log fold-change (LFC) for target gene  
-- **Output**: Model-ready CSV with SMILES and labeled gene activity (e.g., LFC of PIN1)
+1. **Data Curation**  
+   - Input: Transcriptomic or bioactivity datasets (e.g., LINCS)  
+   - Output: SMILES-labeled CSVs with standardized activity values (e.g., LFC)  
 
-### 2. Model Training
-- **Stages**: Full dataset → Biological subset → Target-specific subset  
-- **Tool**: Hierarchically fine-tuned MolFormer  
-- **Output**: Model checkpoints and prediction script
+2. **Model Fine-Tuning**  
+   - Tool: MolFormer pretrained on 100M compounds (ZINC + PubChem)  
+   - Phases: General → Disease-specific → Target-specific  
+   - Output: Fine-tuned model checkpoint for regression/classification tasks  
 
-### 3. Library Input
-- **Input**: Canonical SMILES for candidate ligands  
-- **Tools**: RDKit, Open Babel  
-- **Output**: Validated, conformer-enriched ligand files
+3. **Compound Library Preparation**  
+   - Source: ZINC20 (https://files.docking.org/zinc20-ML/)  
+   - Tools: `screen_valid_smiles.py`, `generate_multiconformers.py`  
+   - Output: Validated and expanded SMILES inputs (PDB, PDBQT)
 
-### 4. Protein-Ligand Docking
-- **Input**: Target protein (PDBQT) and ligand library (PDBQT)  
-- **Tool**: AutoDock Vina  
-- **Output**: Docking scores (binding affinity)
+4. **Structure-Based Docking**  
+   - Tool: AutoDock Vina (selected for scalability)  
+   - Output: Docking scores per conformer (BA in kcal/mol)
 
-### 5. Molecular Dynamics Simulation
-- **Input**: Docked complexes  
-- **Tool**: OpenMM  
-- **Output**: Trajectory (DCD), minimized PDB, energy profiles
+5. **Molecular Dynamics Simulation**  
+   - Tool: OpenMM + AMBER-style prep (via tleap)  
+   - Output: Time-resolved RMSD and trajectory stability metrics
 
-### 6. ADMET Property Evaluation
-- **Input**: Ligand library  
-- **Tool**: ADMET-AI  
-- **Output**: Drug-likeness score across 41 features
+6. **ADMET Filtering**  
+   - Tool: ADMET-AI (GNN-based)  
+   - Output: 41 pharmacokinetic and toxicity predictions, including composite ADMET scores
 
 ---
 
-## 🧬 Supported Data Sources
+## 📊 Representative Results
 
-- **Transcriptomics**: LINCS CLUE platform, GEO, or custom datasets  
-- **Chemicals**: ZINC20, PubChem, or in-house compound libraries  
-- **Structures**: PDB (target protein), RDKit for ligand generation
+The DL-VSP pipeline was benchmarked on a multi-stage fine-tuning task targeting **PIN1 inhibition in TNBC**:
+
+- **Figure 3**: Multi-phase MAE loss curves and residual distributions (Pancancer → BC → TNBC stages) demonstrate progressive refinement.
+- **Figure 4**: Compound reduction funnel shows stepwise filtering across model prediction (LFC < –2.0), docking (BA < –6.0), MD (RMSD < 0.6 nm), and ADMET (score > 0.5), yielding 7 prioritized candidates from an initial 10M ZINC20 entries.
 
 ---
 
-## 🔧 Dependencies
+## 🧬 Supported Input Sources
 
-- Python ≥ 3.8  
-- [RDKit](https://www.rdkit.org)  
-- [MolFormer](https://ibm.box.com/v/MolFormer-data)  
-- [AutoDock Vina](https://vina.scripps.edu)  
-- [Open Babel](http://openbabel.org)  
-- [OpenMM](https://openmm.org)  
-- [ADMET-AI](https://admet.ai.greenstonebio.com)  
-- PyMOL / ChimeraX (for structural visualization)
+- **Expression datasets**: LINCS, GEO, DepMap, ENCODE  
+- **Compounds**: ZINC20, PubChem, in-house libraries  
+- **Structure files**: PDB, MOL2, or SMILES
 
-> Create and activate the environment for each module:
+---
+
+## 🔧 Environment Setup
+
+Each module operates within its own Conda environment:
 
 ```bash
-conda env create -f envs/MolFormer_env.yaml      # Model training
-conda env create -f envs/Vina_env.yaml           # Docking
-conda env create -f envs/Ambertools_env.yaml     # MD simulations
-conda env create -f envs/ADMETai_env.yaml        # ADMET filtering
+conda env create -f envs/MolFormer_env.yaml     # Model fine-tuning
+conda env create -f envs/Vina_env.yaml          # Docking
+conda env create -f envs/Ambertools_env.yaml    # MD simulation
+conda env create -f envs/ADMETai_env.yaml       # ADMET prediction
 ```
 
-> 💡 Then activate as needed with `conda activate <env_name>`.
+Activate with `conda activate <env_name>`.
 
 ---
 
-## 📂 Directory Structure
+## 📂 Repository Structure
 
-```plaintext
+\`\`\`plaintext
 Protocol/
-│
-├── 1_data_processing/
-│   ├── calculate_logfc.py
-│   ├── parse_gctx_to_csv.py
-│   └── preprocess_expression_data.py
-│
-├── 2_model_training/
-│   ├── finetune.py
-│   ├── validate.py
-│   ├── predict.py
-│   ├── run_finetune.sh
-│   ├── run_validate.sh
-│   ├── run_predict.sh
-│   ├── args.py
-│   ├── tokenizer.py
-│   ├── trainer.py
-│   ├── utils.py
-│   └── finetuning/
-│       ├── pretrained/
-│       │   └── database_link.txt
-│       ├── rotate_attention/
-│       │   ├── attention_layer.py
-│       │   ├── rotary.py
-│       │   └── rotate_builder.py
-│       └── source/
-│           ├── sample_stage1.csv
-│           ├── sample_stage2.csv
-│           ├── sample_stage3.csv
-│           ├── sample_val.csv
-│           └── sample_test.csv
-│
-├── 3_library_input/
-│   ├── generate_multiconformers.py
-│   ├── predict.py
-│   └── screen_valid_smiles.py
-│
-├── 4_protein_ligand_docking/
-│   ├── run_docking_batch.py
-│   ├── input/sample/
-│   │   ├── conf.txt
-│   │   ├── sample_ligand.pdb
-│   │   └── sample_protein.pdb
-│   └── output/sample/
-│       ├── sample_variant0_conf0.pdbqt
-│       ├── sample_variant0_conf1.pdbqt
-│       ├── ...
-│       └── sample_variant0_conf9.pdbqt
-│
-├── 5_md_simulation/
-│   ├── analyze_rmsd.py
-│   ├── convert_pdb_to_mol2.py
-│   ├── mol2_to_frcmod.py
-│   ├── run_md_simulation.py
-│   ├── tleap.in
-│   ├── input/sample/
-│   │   ├── frcmod/ligand.frcmod
-│   │   ├── gaff_mol2/ligand.mol2
-│   │   ├── ligand_complex/
-│   │   │   ├── ligand_vac.pdb
-│   │   │   ├── ligand_wat.inpcrd
-│   │   │   ├── ligand_wat.pdb
-│   │   │   └── ligand_wat.prmtop
-│   │   └── pdb/
-│   │       ├── sample_ligand.pdb
-│   │       └── sample_protein.pdb
-│   └── output/sample/
-│       ├── init.pdb
-│       ├── leap.log
-│       ├── RMSD_ligand.png
-│       └── scalars.csv
-│
-├── 6_admet_scoring/
-│   ├── calculate_admet_score.py
-│   ├── input/sample/
-│   │   └── smiles.csv
-│   └── output/sample/
-│       ├── admet_score.csv
-│       └── result.csv
-│
-├── data/
-├── envs/
-│   ├── MolFormer_env.yaml
-│   ├── Vina_env.yaml
-│   ├── Ambertools_env.yaml
-│   └── ADMETai_env.yaml
-├── results/
-├── LICENSE
-└── .gitignore
-```
+├── 1_data_processing/              # Expression data parsing and labeling
+├── 2_model_training/              # MolFormer fine-tuning (multi-phase)
+├── 3_library_input/               # SMILES standardization, conformer generation
+├── 4_protein_ligand_docking/      # Docking scripts and config
+├── 5_md_simulation/               # Force field setup, simulation, RMSD analysis
+├── 6_admet_scoring/               # ADMET-AI prediction and scoring
+├── data/                          # Raw data and preprocessed samples
+├── envs/                          # Conda environment YAMLs
+├── results/                       # Output predictions and filtered candidates
+└── LICENSE, .gitignore
+\`\`\`
+
+---
+
+## 🔬 Reference Model: MolFormer
+
+The pretrained MolFormer model was developed by IBM and trained on ~100M canonical SMILES from ZINC and PubChem. It uses linear attention with rotary embeddings and supports downstream fine-tuning for both regression and classification tasks.
+
+Checkpoints available at: https://ibm.box.com/v/MolFormer-data  
+Original study: Ross *et al.* (2022), *Nature Machine Intelligence*  
+DOI: [10.1038/s42256-022-00580-7](https://doi.org/10.1038/s42256-022-00580-7)
+
+---
+
+## 📄 Citation
+
+If you use this repository, please cite the associated MoLFormer paper and acknowledge this pipeline in your work. See [CITATION.cff](./CITATION.cff) for formatted references.

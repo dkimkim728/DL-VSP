@@ -80,7 +80,7 @@ Activate with `conda activate <env_name>`.
 
 ## 📂 Repository Structure
 
-\`\`\`plaintext
+```plaintext
 Protocol/
 ├── 1_data_processing/              # Expression data parsing and labeling
 ├── 2_model_training/              # MolFormer fine-tuning (multi-phase)
@@ -92,7 +92,7 @@ Protocol/
 ├── envs/                          # Conda environment YAMLs
 ├── results/                       # Output predictions and filtered candidates
 └── LICENSE, .gitignore
-\`\`\`
+```
 
 ---
 
